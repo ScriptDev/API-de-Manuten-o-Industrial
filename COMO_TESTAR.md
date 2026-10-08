@@ -12,7 +12,7 @@ Este documento é o guia prático e oficial para executar, testar e homologar **
 1. [Preparação do Ambiente e Inicialização](#1-preparação-do-ambiente-e-inicialização)
 2. [Método 1: Testes pelo Swagger UI (Navegador)](#2-método-1-testes-pelo-swagger-ui-navegador)
 3. [Método 2: Testes pelo Postman (Coleção Pronta)](#3-método-2-testes-pelo-postman-coleção-pronta)
-4. [Roteiro Oficial de Validação dos 8 Problemas da Prova](#4-roteiro-oficial-de-validação-dos-8-problemas-da-prova)
+4. [Validação Técnica dos 8 Cenários de Negócio](#4-validação-técnica-dos-8-cenários-de-negócio)
 5. [Validação dos Tratamentos de Erro Obrigatórios](#5-validação-dos-tratamentos-de-erro-obrigatórios)
 6. [Restauração Rápida do Banco de Dados (Reset de Dados)](#6-restauração-rápida-do-banco-de-dados-reset-de-dados)
 
@@ -34,7 +34,7 @@ Execute os dois comandos abaixo:
 # Sincroniza o schema com o SQLite
 npx prisma db push
 
-# Popula o banco com os dados realistas da apresentação
+# Popula o banco com a massa de dados inicial de teste
 npm run seed
 ```
 
@@ -71,7 +71,7 @@ O terminal exibirá:
 
 ## 2. Método 1: Testes pelo Swagger UI (Navegador)
 
-Esta é a forma mais simples e visual para testar e apresentar em sala de aula, sem necessidade de instalar programas extras.
+Esta é a forma mais ágil e interativa para validar os endpoints diretamente pelo navegador, sem necessidade de ferramentas adicionais.
 
 1. Abra seu navegador de internet (Google Chrome, Edge, Firefox).
 2. Acesse a URL: **[http://localhost:3000/api-docs](http://localhost:3000/api-docs)**.
@@ -113,9 +113,9 @@ O projeto já inclui o arquivo [`postman_collection.json`](./postman_collection.
 
 ---
 
-## 4. Roteiro Oficial de Validação dos 8 Problemas da Prova
+## 4. Validação Técnica dos 8 Cenários de Negócio
 
-Abaixo está o roteiro exato para testar e comprovar a solução de cada um dos 8 problemas exigidos no edital da NP1:
+Abaixo estão os procedimentos detalhados para testar e homologar cada um dos 8 requisitos de negócio implementados:
 
 ---
 
@@ -343,7 +343,7 @@ O edital da prova exige o tratamento específico de cenários anômalos. Para te
 
 ## 6. Restauração Rápida do Banco de Dados (Reset de Dados)
 
-Se durante os testes você cadastrar novos dados, alterar registros ou desejar reiniciar o banco com o estado inicial perfeito antes da apresentação:
+Se durante os testes você cadastrar novos dados, alterar registros ou desejar reiniciar o banco para o estado inicial:
 
 1. Vá ao terminal onde a API está rodando (ou abra um novo terminal na pasta).
 2. Execute:

@@ -24,7 +24,7 @@ A documentação está distribuída de forma profissional em três níveis compl
    👉 `http://localhost:3000/api-docs`  
    Permite testar qualquer rota em tempo real com o botão *Try it out*, schemas validados e exemplos de payload.
 2. **Documentação Técnica Estrutural (Este arquivo README.md):**  
-   Visível diretamente no GitHub e na raiz do projeto, contendo arquitetura, diagramas ERD, dicionário de rotas com entradas/saídas e guia de apresentação.
+   Visível diretamente no GitHub e na raiz do projeto, contendo arquitetura, diagramas ERD e dicionário de rotas com entradas e saídas.
 3. **Documentação de Testes Executáveis (Postman Collection):**  
    Arquivo [`postman_collection.json`](./postman_collection.json) pronto para ser importado no Postman, contendo todas as requisições categorizadas por módulo e testes para os 8 problemas.
 4. **Manual Passo a Passo de Testes:**  
@@ -286,8 +286,8 @@ erDiagram
    npx prisma db push
    ```
 
-3. **Popular o Banco com Dados Reais para a Apresentação (Seed):**
-   Insere máquinas em manutenção, ordens de serviço abertas e finalizadas, defeito crítico, manutenção vencida e peças com histórico compartilhado:
+3. **Popular o Banco com Carga Inicial de Dados (Seed):**
+   Insere dados de exemplo cobrindo equipamentos, ordens de serviço, defeito crítico, manutenção preventiva e histórico de peças:
    ```powershell
    npm run seed
    ```
@@ -306,29 +306,6 @@ erDiagram
    Acesse no navegador:
    * **API Root:** `http://localhost:3000`
    * **Swagger Interativo:** `http://localhost:3000/api-docs`
-
----
-
-## 🎤 8. Roteiro Sugerido para a Apresentação de 15 Minutos
-
-1. **Minutos 0 a 3 – Introdução e Arquitetura:**
-   * Apresentar o problema (planilhas manuais na fábrica vs sistema integrado).
-   * Mostrar a estrutura modular (`Clean Architecture`), o uso de TypeScript, Express e SQLite com Prisma ORM.
-2. **Minutos 3 a 7 – Demonstração do Swagger e CRUD:**
-   * Abrir `http://localhost:3000/api-docs`.
-   * Demonstrar o cadastro de um equipamento, listagem e busca por ID.
-3. **Minutos 7 a 12 – Apresentação dos 8 Problemas em Funcionamento (via Swagger ou Postman):**
-   * **Problema 1:** Atualizar máquina com PUT.
-   * **Problema 2:** Tentar abrir OS com ID inexistente e mostrar o erro 404 amigável.
-   * **Problema 3:** Chamar `GET /manutencoes/vencidas` e mostrar o alerta operacional e dias de atraso.
-   * **Problema 4:** Chamar `GET /pecas/historico/ROL-6205` e mostrar o histórico acumulado de substituições.
-   * **Problema 5:** Chamar `GET /defeitos/criticos` e mostrar o alarme de emergência.
-   * **Problema 6:** Tentar excluir uma máquina que possui OS e mostrar o bloqueio 400 por chave estrangeira.
-   * **Problema 7:** Chamar `GET /equipamentos/em-manutencao`.
-   * **Problema 8:** Chamar `GET /ordens-servico/:id/custo-pecas` e exibir o total somado das peças em reais.
-4. **Minutos 12 a 15 – Conclusão e Testes no Postman:**
-   * Abrir o Postman e mostrar a coleção `postman_collection.json` importada com todas as rotas verdes e funcionais.
-   * Responder a perguntas do professor.
 
 ---
 
