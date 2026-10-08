@@ -1,0 +1,238 @@
+{
+  "info": {
+    "_postman_id": "b3e0c0fa-2384-4822-bcf8-34856012478a",
+    "name": "NP1 - Manutenção Industrial (API Completa)",
+    "description": "Coleção de testes e avaliação acadêmica NP1 - UniATENEU. Cobre todos os CRUDs, métodos HTTP e resolução prática dos 8 problemas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Equipamentos",
+      "item": [
+        {
+          "name": "Listar Todos os Equipamentos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/equipamentos", "host": ["{{baseUrl}}"], "path": ["equipamentos"] }
+          }
+        },
+        {
+          "name": "[Problema 7] Consultar Equipamentos em Manutenção",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/equipamentos/em-manutencao", "host": ["{{baseUrl}}"], "path": ["equipamentos", "em-manutencao"] }
+          }
+        },
+        {
+          "name": "Cadastrar Novo Equipamento",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Centro de Usinagem 5 Eixos\",\n  \"modelo\": \"D-800\",\n  \"fabricante\": \"Romi\",\n  \"dataInstalacao\": \"2023-04-10T08:00:00Z\",\n  \"status\": \"Ativo\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/equipamentos", "host": ["{{baseUrl}}"], "path": ["equipamentos"] }
+          }
+        },
+        {
+          "name": "[Problema 1] Atualizar Máquina Cadastrada Incorretamente",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Centro de Usinagem CNC Corrigido\",\n  \"modelo\": \"D-800 EVO\",\n  \"fabricante\": \"Romi Indústrias\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/equipamentos/:id", "host": ["{{baseUrl}}"], "path": ["equipamentos", ":id"], "variable": [{ "key": "id", "value": "INSIRA_O_ID_AQUI" }] }
+          }
+        },
+        {
+          "name": "[Problema 6] Excluir Equipamento (Bloqueado por Vínculo de OS)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/equipamentos/:id", "host": ["{{baseUrl}}"], "path": ["equipamentos", ":id"], "variable": [{ "key": "id", "value": "INSIRA_ID_COM_OS_VINCULADA" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Ordens de Serviço",
+      "item": [
+        {
+          "name": "Listar Todas as Ordens de Serviço",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/ordens-servico", "host": ["{{baseUrl}}"], "path": ["ordens-servico"] }
+          }
+        },
+        {
+          "name": "[Problema 2] Abrir OS - Sucesso",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipamentoId\": \"INSIRA_ID_VALIDO\",\n  \"tipo\": \"Corretiva\",\n  \"responsavel\": \"Carlos Alberto\",\n  \"status\": \"Aberta\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/ordens-servico", "host": ["{{baseUrl}}"], "path": ["ordens-servico"] }
+          }
+        },
+        {
+          "name": "[Problema 2] Tentativa de Abrir OS com Equipamento Inexistente (404)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipamentoId\": \"id-fantasma-inexistente-123\",\n  \"tipo\": \"Corretiva\",\n  \"responsavel\": \"Técnico de Plantão\",\n  \"status\": \"Aberta\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/ordens-servico", "host": ["{{baseUrl}}"], "path": ["ordens-servico"] }
+          }
+        },
+        {
+          "name": "[Problema 8] Calcular Custo Total de Peças da OS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/ordens-servico/:id/custo-pecas", "host": ["{{baseUrl}}"], "path": ["ordens-servico", ":id", "custo-pecas"], "variable": [{ "key": "id", "value": "INSIRA_ID_DA_OS" }] }
+          }
+        },
+        {
+          "name": "[Regra] Tentar Modificar OS Finalizada (Bloqueio 400)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Em andamento\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/ordens-servico/:id", "host": ["{{baseUrl}}"], "path": ["ordens-servico", ":id"], "variable": [{ "key": "id", "value": "INSIRA_ID_OS_FINALIZADA" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Defeitos",
+      "item": [
+        {
+          "name": "Listar Defeitos Cadastrados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/defeitos", "host": ["{{baseUrl}}"], "path": ["defeitos"] }
+          }
+        },
+        {
+          "name": "[Problema 5] Cadastrar Defeito Crítico (Com Alerta de Prioridade)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipamentoId\": \"INSIRA_ID_VALIDO\",\n  \"descricao\": \"Ruptura na mangueira principal com vazamento de óleo inflamável.\",\n  \"severidade\": \"Crítico\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/defeitos", "host": ["{{baseUrl}}"], "path": ["defeitos"] }
+          }
+        },
+        {
+          "name": "[Problema 5] Listar Defeitos de Alta Severidade / Críticos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/defeitos/criticos", "host": ["{{baseUrl}}"], "path": ["defeitos", "criticos"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Manutenções Preventivas",
+      "item": [
+        {
+          "name": "Listar Todas as Manutenções Preventivas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/manutencoes", "host": ["{{baseUrl}}"], "path": ["manutencoes"] }
+          }
+        },
+        {
+          "name": "[Problema 3] Consultar Manutenções Vencidas (Alerta Operacional)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/manutencoes/vencidas", "host": ["{{baseUrl}}"], "path": ["manutencoes", "vencidas"] }
+          }
+        },
+        {
+          "name": "Cadastrar Programação Preventiva",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipamentoId\": \"INSIRA_ID_VALIDO\",\n  \"periodicidadeDias\": 45,\n  \"ultimaManutencao\": \"2026-07-01T08:00:00Z\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/manutencoes", "host": ["{{baseUrl}}"], "path": ["manutencoes"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Peças Substituídas",
+      "item": [
+        {
+          "name": "Listar Todas as Peças",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/pecas", "host": ["{{baseUrl}}"], "path": ["pecas"] }
+          }
+        },
+        {
+          "name": "[Problema 4] Consultar Histórico de Peça por Código (ROL-6205)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/pecas/historico/ROL-6205", "host": ["{{baseUrl}}"], "path": ["pecas", "historico", "ROL-6205"] }
+          }
+        },
+        {
+          "name": "Cadastrar Peça Substituída em OS Aberta",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Filtro Hidráulico de Sucção\",\n  \"codigo\": \"FILT-100\",\n  \"quantidade\": 2,\n  \"custoUnitario\": 85.90,\n  \"ordemServicoId\": \"INSIRA_ID_OS_ABERTA\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/pecas", "host": ["{{baseUrl}}"], "path": ["pecas"] }
+          }
+        },
+        {
+          "name": "[Regra] Tentar Cadastrar Peça em OS Finalizada (Bloqueio 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Sensor Indutivo M12\",\n  \"codigo\": \"SENS-M12\",\n  \"quantidade\": 1,\n  \"custoUnitario\": 120.00,\n  \"ordemServicoId\": \"INSIRA_ID_OS_FINALIZADA\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/pecas", "host": ["{{baseUrl}}"], "path": ["pecas"] }
+          }
+        }
+      ]
+    }
+  ]
+}

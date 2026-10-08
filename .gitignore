@@ -1,0 +1,14 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+
+# Banco de dados local SQLite
+*.db
+*.db-journal
+
+# Logs e ambiente
+*.log
+npm-debug.log*
+.DS_Store

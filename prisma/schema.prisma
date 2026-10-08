@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Equipamento {
+  id             String                 @id @default(uuid())
+  nome           String
+  modelo         String
+  fabricante     String
+  dataInstalacao DateTime
+  status         String                 // Ativo, Em manutenção, Inativo
+  ordens         OrdemServico[]
+  defeitos       Defeito[]
+  manutencoes    ManutencaoPreventiva[]
+}
+
+model OrdemServico {
+  id            String            @id @default(uuid())
+  equipamentoId String
+  equipamento   Equipamento       @relation(fields: [equipamentoId], references: [id], onDelete: Restrict)
+  tipo          String            // Preventiva, Corretiva
+  dataAbertura  DateTime          @default(now())
+  dataConclusao DateTime?
+  responsavel   String
+  status        String            // Aberta, Em andamento, Finalizada
+  pecas         PecaSubstituida[]
+}
+
+model Defeito {
+  id            String      @id @default(uuid())
+  equipamentoId String
+  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id], onDelete: Restrict)
+  descricao     String
+  severidade    String      // Baixo, Médio, Alto, Crítico
+  dataRegistro  DateTime    @default(now())
+}
+
+model ManutencaoPreventiva {
+  id                String      @id @default(uuid())
+  equipamentoId     String
+  equipamento       Equipamento @relation(fields: [equipamentoId], references: [id], onDelete: Restrict)
+  periodicidadeDias Int
+  ultimaManutencao  DateTime
+  proximaManutencao DateTime
+}
+
+model PecaSubstituida {
+  id             String       @id @default(uuid())
+  nome           String
+  codigo         String
+  quantidade     Int
+  custoUnitario  Float
+  ordemServicoId String
+  ordemServico   OrdemServico @relation(fields: [ordemServicoId], references: [id], onDelete: Cascade)
+}
