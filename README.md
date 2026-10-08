@@ -11,13 +11,13 @@
 
 A **API de Controle de Manutenção Industrial** foi desenvolvida para solucionar o problema crítico de indústrias que operam com registros de manutenção dispersos em planilhas eletrônicas. O sistema centraliza a governança de ativos fabris em uma arquitetura RESTful de alta performance, assegurando persistência íntegra, rastreabilidade de falhas, planejamento preventivo de paradas e controle orçamentário do consumo de peças.
 
-A solução cumpre **100% dos requisitos do edital da NP1**, incluindo todas as operações CRUD obrigatórias, tratamento defensivo de erros, documentação interativa OpenAPI/Swagger, testes automatizados no Postman e resolução dos **8 cenários práticos** propostos.
+A solução cumpre **100% dos requisitos da atividade proposta da NP1**, incluindo todas as operações CRUD obrigatórias, tratamento defensivo de erros, documentação interativa OpenAPI/Swagger, testes automatizados no Postman e resolução dos **8 cenários práticos** propostos.
 
 ---
 
 ## 🗺️ 2. Onde Fica a Documentação da API?
 
-A documentação está distribuída de forma profissional em três níveis complementares:
+A documentação está distribuída em três níveis complementares:
 
 1. **Documentação Interativa (Swagger / OpenAPI 3.0):**  
    Disponível em tempo de execução no navegador no endpoint:  
@@ -244,7 +244,7 @@ erDiagram
 
 ---
 
-## 🎯 6. Resolução dos 8 Problemas Obrigatórios da NP1
+## 🎯 6. Resolução dos Problemas abordados da atividade e que são Obrigatórios para essa atividade.
 
 | Nº | Problema do Enunciado | Resolução Técnica no Sistema | Endpoint Correspondente |
 | :-: | :--- | :--- | :--- |
