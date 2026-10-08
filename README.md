@@ -27,6 +27,8 @@ A documentação está distribuída de forma profissional em três níveis compl
    Visível diretamente no GitHub e na raiz do projeto, contendo arquitetura, diagramas ERD, dicionário de rotas com entradas/saídas e guia de apresentação.
 3. **Documentação de Testes Executáveis (Postman Collection):**  
    Arquivo [`postman_collection.json`](./postman_collection.json) pronto para ser importado no Postman, contendo todas as requisições categorizadas por módulo e testes para os 8 problemas.
+4. **Manual Passo a Passo de Testes:**  
+   Consulte o guia dedicado [`COMO_TESTAR.md`](./COMO_TESTAR.md) para instruções detalhadas de teste via Swagger, Postman e validação dos 8 problemas.
 
 ---
 
