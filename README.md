@@ -11,7 +11,7 @@
 
 A **API de Controle de Manutenção Industrial** foi desenvolvida para solucionar o problema crítico de indústrias que operam com registros de manutenção dispersos em planilhas eletrônicas. O sistema centraliza a governança de ativos fabris em uma arquitetura RESTful de alta performance, assegurando persistência íntegra, rastreabilidade de falhas, planejamento preventivo de paradas e controle orçamentário do consumo de peças.
 
-A solução cumpre **100% dos requisitos da atividade proposta da NP1**, incluindo todas as operações CRUD obrigatórias, tratamento defensivo de erros, documentação interativa OpenAPI/Swagger, testes automatizados no Postman e resolução dos **8 cenários práticos** propostos.
+A solução cumpre **100% dos requisitos da atividade proposta da NNP1**, incluindo todas as operações CRUD obrigatórias, tratamento defensivo de erros, documentação interativa OpenAPI/Swagger, testes automatizados no Postman e resolução dos **8 cenários práticos** propostos.
 
 ---
 
