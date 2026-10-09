@@ -25,7 +25,7 @@ Antes de iniciar qualquer teste, a API e o banco de dados SQLite precisam estar 
 ### Passo 1.1: Abrir o Terminal
 Abra o **PowerShell** ou **Prompt de Comando** dentro da pasta do projeto:
 ```powershell
-cd "c:\Users\Usuario\OneDrive - Centro Universitário Ateneu\Área de Trabalho\Atvidade Jallyson"
+cd API-de-Manuten-o-Industrial
 ```
 
 ### Passo 1.2: Garantir que o Banco está Sincronizado e com Dados de Teste

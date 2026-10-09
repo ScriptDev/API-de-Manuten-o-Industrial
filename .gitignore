@@ -12,3 +12,4 @@ dist/
 *.log
 npm-debug.log*
 .DS_Store
+*.docx

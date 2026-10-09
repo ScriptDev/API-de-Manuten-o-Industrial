@@ -1,7 +1,7 @@
 {
-  "name": "atvidade-jallyson",
+  "name": "api-manutencao-industrial",
   "version": "1.0.0",
-  "description": "",
+  "description": "API RESTful para controle de manutenção industrial",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
