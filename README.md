@@ -244,7 +244,7 @@ erDiagram
 
 ---
 
-## 🎯 6. Resolução dos Problemas abordados da atividade e que são Obrigatórios para essa atividade.
+## 🎯 6. Resolução dos Problemas abordados da atividade e que são Obrigatórios para a atividade.
 
 | Nº | Problema do Enunciado | Resolução Técnica no Sistema | Endpoint Correspondente |
 | :-: | :--- | :--- | :--- |
